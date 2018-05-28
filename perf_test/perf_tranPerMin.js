@@ -29,11 +29,16 @@ var oldBlockNum = eth.blockNumber
 //Calculate the transaction count of per minutes.
 function calcTranCount(startBlockNum, endBlockNum) {
 	var totalTranCount = 0.0000
+	var tranPerMin = 0.000000
 	for(var i = startBlockNum + 1; i <= endBlockNum; i++) {
 		totalTranCount += eth.getBlockTransactionCount(i)
 		//console.log("Total transaction count: " + totalTranCount/min)
 	}
-	console.log("    Blocks:[from: " + startBlockNum + " to: " + endBlockNum + " tranCnt: " + totalTranCount + " ]")
+	//get total time
+	startTime = eth.getBlock(startBlockNum)['timestamp']
+	endTime = eth.getBlock(endBlockNum)['timestamp']
+	tranPerSec = (totalTranCount * 60 )/ (endTime - startTime)
+	console.log("    Blocks:[from: " + startBlockNum + " to: " + endBlockNum + "] tranPerMin: " + tranPerMin+ " sec: " + (endTime - startTime))
 }
 
 //Show the result of one minutes.
