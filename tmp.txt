@@ -1,0 +1,16 @@
+智能合约:
+	循环一次:(12000个交易/秒)
+Blocks per minute: 77
+    Blocks:[from: 33705 to: 33782] tranPerMin: 11681.298701298701 sec: 77
+Blocks per minute: 76
+    Blocks:[from: 33782 to: 33858] tranPerMin: 10908.157894736842 sec: 76
+Blocks per minute: 77
+    Blocks:[from: 33858 to: 33935] tranPerMin: 11301.038961038961 sec: 77
+Blocks per minute: 78
+    Blocks:[from: 33935 to: 34013] tranPerMin: 12970 sec: 78
+Blocks per minute: 77
+    Blocks:[from: 34013 to: 34090] tranPerMin: 10731.42857142857 sec: 77
+Blocks per minute: 78
+    Blocks:[from: 34090 to: 34168] tranPerMin: 12581.538461538461 sec: 78
+Blocks per minute: 77
+    Blocks:[from: 34168 to: 34245] tranPerMin: 13027.792207792209 sec: 77
