@@ -35,6 +35,7 @@ var totalTransactionCount = 0
 personal.unlockAccount(procInfo.fromAccount, procInfo.password, 60*60*100)  //100 hours
 
 //send transaction.
+//can not use async function as nonce error.  /* guoxu core.ErrNonceTooLow */
 function sendTransactionBatch() {
 	eth.sendTransaction({from:procInfo.fromAccount,to:procInfo.toAccount,value:"1"}, 
     		function(error, result){
@@ -44,11 +45,12 @@ function sendTransactionBatch() {
 				totalTransactionCount += 1
         			console.log("Total Transaction count: " + totalTransactionCount)
     			}
+			sendTransactionBatch()
 		})
 }
 
 function runSmartContractFunc() {
-	var executeStr = "global.contractInstance." + config.testFunction + ".sendTransaction({from:'" + procInfo.fromAccount + "', gas: 2000000})"
+	var executeStr = "global.contractInstance." + config.testFunction + ".sendTransaction({from:'" + procInfo.fromAccount + "', gas: 100000})"
 	console.log(executeStr)
 	var executeStrWithLog = "console.log(" + executeStr + ".toString())"
 	eval(executeStrWithLog)
@@ -64,6 +66,7 @@ if(testType == 2) {
 	console.log("Running smart contract case...")
 	const hwContract = web3.eth.contract(JSON.parse(abi))
 	global.contractInstance = hwContract.at(procInfo.contractAddress)
-	setInterval(runSmartContractFunc,procInfo.interval)
+	//setInterval(runSmartContractFunc,procInfo.interval)
+	sendTransactionBatch()
 }
 
