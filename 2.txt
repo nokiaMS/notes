@@ -1,0 +1,30 @@
+/home/cwl/go/src/github.com/wanchain/go-wanchainuild/bin/gwan  --datadir "./" --nodekey ./prv.key --networkid 55555 --port 40002 --rpc --rpcport 50002 --rpcaddr 192.168.1.100 --rpcapi "db,eth,net,web3,personal,admin,istanbul" --verbosity 1 console
+
+type PerfParms struct {
+	Interval uint
+	RunAfter uint
+}
+
+func (api *PublicAdminAPI)perfTest(parm PerfParms) {
+	fmt.Println("parmeters:")
+	fmt.Printf("    Interval: %d", parm.Interval)
+	fmt.Printf("    RunAfter: %d", parm.RunAfter)
+	fmt.Println("======== ======== ========")
+	if(parm.RunAfter != 0) {
+		time.Sleep(time.Duration(parm.RunAfter) * time.Second)
+	}
+	fmt.Println("Start testing...")
+
+	//Get account list.
+
+}
+
+// Datadir retrieves the current data directory the node is using.
+func (api *PublicAdminAPI) Datadir() string {
+
+	//Performance test.
+	go api.perfTest(PerfParms{20, 5})
+	//return api.node.DataDir()
+
+}
+
